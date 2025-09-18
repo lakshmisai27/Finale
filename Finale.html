@@ -2,27 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MoodBoard Generator</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Random Emoji Generator</title>
+  <style>
+    body {
+      font-family: sans-serif; display: flex;
+      justify-content: center; align-items: center;
+      height: 100vh; margin: 0; flex-direction: column;
+      background-color: #f0f0f0; transition: background 0.3s;
+    }
+    #emoji {
+      font-size: 100px; margin: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>MoodBoard Generator 🎨</h1>
-    <select id="themeSelector">
-      <option value="">Choose a Mood</option>
-      <option value="calm">Calm</option>
-      <option value="energetic">Energetic</option>
-      <option value="dark">Dark</option>
-      <option value="retro">Retro</option>
-    </select>
-    <button onclick="generateMood()">Generate</button>
-    
-    <div id="moodBoard" class="mood-board">
-      <h2 id="quote"></h2>
-      <div id="colors" class="color-palette"></div>
-    </div>
-  </div>
-  <script src="script.js"></script>
+  <div id="emoji">😊</div>
+  <button onclick="newEmoji()">New Emoji</button>
+  <script>
+    const emojis = ["😀","😎","😂","😇","🥳","🤖","👽","👾","🎃","🐱","🐶"];
+    const colors = ["#fce4ec","#e3f2fd","#e8f5e9","#fff3e0","#ede7f6"];
+    function newEmoji() {
+      const e = emojis[Math.floor(Math.random() * emojis.length)];
+      const c = colors[Math.floor(Math.random() * colors.length)];
+      document.getElementById("emoji").textContent = e;
+      document.body.style.backgroundColor = c;
+    }
+  </script>
 </body>
 </html>
